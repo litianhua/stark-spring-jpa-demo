@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
+	<!-- 开启注解模式 -->
+	<mvc:annotation-driven />
+	<!-- 注解扫描配置 -->
+	<context:component-scan base-package="com.stark.demo" />
+	<!-- jpa dao接口包配置 -->
+	<jpa:repositories base-package="com.stark.demo.dao"/>
+	<!-- 数据源配置文件 -->
+	<context:property-placeholder location="classpath:/application.properties" />
+	<!-- 数据源配置 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${app.jdbc.driverClass}"></property>
+		<property name="url" value="${app.jdbc.url}"></property>
+		<property name="username" value="${app.jdbc.username}"></property>
+		<property name="password" value="${app.jdbc.password}"></property>
+		<property name="initialSize" value="${app.jdbc.initialSize}"></property>
+		<property name="maxActive" value="${app.jdbc.maxActive}"></property>
+		<property name="maxIdle" value="${app.jdbc.maxIdle}"></property>
+		<property name="maxWait" value="${app.jdbc.maxWait}"></property>
+		<property name="minIdle" value="${app.jdbc.minIdle}"></property>
+		<property name="validationQuery" value="SELECT 1"></property>
+		<property name="testOnBorrow" value="true"></property>
+		<property name="testOnReturn" value="false"></property>
+	</bean>
+	 <!-- 持久化实现类 -->
+	<bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence" />
+	<!--JPA特定属性配置 -->
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="generateDdl" value="true" />
+		<property name="showSql" value="true" />
+		<property name="database" value="${app.jdbc.dbType}" />
+	</bean>
+	<!-- 高级特性配置 -->
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"></bean>
+	<!-- entityManagerFactory -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan" value="com.stark.demo.entitys" /><!-- jpa实体包 -->
+		<property name="persistenceProvider" ref="persistenceProvider" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+	<!-- 事务管理器 -->	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+</beans>
