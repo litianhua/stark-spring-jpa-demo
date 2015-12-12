@@ -1,5 +1,9 @@
 package com.stark.demo.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.stark.demo.entitys.User;
 import com.stark.demo.service.UserService;
+import com.stark.demo.specifications.UserSpecs;
 
 @Controller
 @RequestMapping("user")
@@ -49,6 +54,28 @@ public class UserController {
 		String id = request.getParameter("id");
 		User user = this.userService.loadVo(id);
 		return user;
-	} 
+	}
+	
+	/**
+	 * 获取指定条件的用户列表
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping("/userlist.do")
+	public Object userList(HttpServletRequest request) throws Exception{
+		//获取参数
+		String _key = request.getParameter("key");
+		//创建存放参数的Map
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		//存放参数
+		if(_key != null && _key.trim() != ""){
+			paramMap.put("key", _key);
+		}
+		//查询数据
+		List<User> userList = this.userService.findList(UserSpecs.setQuery(paramMap));
+		return userList;
+	}
 	
 }
