@@ -1,9 +1,6 @@
 package com.stark.demo.service;
 
 import java.util.List;
-
-import org.springframework.data.jpa.domain.Specification;
-
 import com.stark.demo.entitys.User;
 
 public interface UserService {
@@ -30,13 +27,5 @@ public interface UserService {
 	 * @throws Exception
 	 */
 	public List<User> findAllList() throws Exception;
-	
-	/**
-	 * 使用Specification查询
-	 * @param spec
-	 * @return
-	 * @throws Exception
-	 */
-	public List<User> findList(Specification<User> spec) throws Exception;
 	
 }

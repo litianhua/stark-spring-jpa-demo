@@ -30,12 +30,6 @@ public class User implements Serializable {
 	@Column(name = "PWD", length = 50)
 	private String pwd;//用户密码
 
-	@Column(name = "STATE", length = 2)
-	private String state;//0表示禁用，1表示启用
-	
-	@Column(name = "DESCRIPTION", length = 200)
-	private String description;//描述信息
-	
 	public String getId() {
 		return id;
 	}
@@ -58,22 +52,6 @@ public class User implements Serializable {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 	
 }
