@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.stark.demo.entitys.User;
-import com.stark.demo.service.UserService;
+import com.stark.demo.service.IUserService;
 import com.stark.demo.specifications.UserSpecs;
 
 @Controller
@@ -20,7 +20,7 @@ import com.stark.demo.specifications.UserSpecs;
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private IUserService userService;
 	
 	/**
 	 * 新增用户，并返回新增之后的用户信息页面

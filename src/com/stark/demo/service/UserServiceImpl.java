@@ -12,7 +12,7 @@ import com.stark.demo.entitys.User;
 
 @Service("userService")
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	private UserDao userDao;

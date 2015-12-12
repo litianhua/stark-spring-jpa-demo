@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.stark.demo.entitys.User;
 
-public interface UserService {
+public interface IUserService {
 
 	/**
 	 * 保存User对象
