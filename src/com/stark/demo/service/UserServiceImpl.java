@@ -61,4 +61,15 @@ public class UserServiceImpl implements IUserService {
 		return userList;
 	}
 
+	@ReadOnly
+	public List<User> findListByCache() throws Exception {
+		List<User> userList = new ArrayList<User>();
+		try {
+			userList = this.userDao.findListByCache();
+		} catch (Exception e) {
+			System.out.println("出错信息：" + e.getMessage());
+		}
+		return userList;
+	}
+
 }

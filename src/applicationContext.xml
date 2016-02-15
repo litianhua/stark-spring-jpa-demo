@@ -48,6 +48,17 @@
 		<property name="persistenceProvider" ref="persistenceProvider" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 		<property name="jpaDialect" ref="jpaDialect" />
+		<!-- 二级缓存配置 -->
+		<property name="jpaProperties">  
+	        <props>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<!-- <prop key="javax.persistence.sharedCache.mode">ENABLE_SELECTIVE</prop> -->
+				<!-- 统计功能
+				<prop key="hibernate.generate_statistics">true</prop> -->
+				<!-- 查询缓存 -->
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+	        </props>
+	    </property>
 	</bean>
 	<!-- 事务管理器 -->	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

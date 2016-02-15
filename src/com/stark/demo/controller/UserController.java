@@ -78,4 +78,18 @@ public class UserController {
 		return userList;
 	}
 	
+	/**
+	 * 通过查询缓存获取指定条件的用户列表
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@ResponseBody
+	@RequestMapping("/userlistCache.do")
+	public Object userlistCache(HttpServletRequest request) throws Exception{
+		//查询缓存数据
+		List<User> userList = this.userService.findListByCache();
+		return userList;
+	}
+
 }

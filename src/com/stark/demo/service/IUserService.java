@@ -39,4 +39,11 @@ public interface IUserService {
 	 */
 	public List<User> findList(Specification<User> spec) throws Exception;
 	
+	/**
+	 * 开启二级查询缓存的列表查询
+	 * @return
+	 * @throws Exception
+	 */
+	public List<User> findListByCache() throws Exception;
+
 }
