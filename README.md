@@ -1,4 +1,4 @@
-# stark-spring-mvc-jpa-demo
+# stark-spring-jpa-demo
 Spring和Jpa的集成Demo.(涉及SpringMVC+Spring+Spring Data JPA).包含缓存等扩展.下面是个人的博客文章,欢迎阅读.
 
 ## 项目创建
