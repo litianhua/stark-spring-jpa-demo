@@ -5,7 +5,7 @@ Spring和Jpa的集成Demo.(涉及SpringMVC+Spring+Spring Data JPA).包含缓存�
 - Java: JDK6
 - IDE: Eclipse Indigo
 - Version:  Spring 3.2.5 / Spring Data Jpa 1.5.0
-- Database: MySql
+- DataBase: MySql
 - Web Server: Tomcat
 
 ## 项目创建
