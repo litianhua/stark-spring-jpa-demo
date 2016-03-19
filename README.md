@@ -10,14 +10,14 @@ Spring和Jpa的集成Demo.(涉及SpringMVC+Spring+Spring Data JPA).包含缓存�
 ## Jpa二级缓存的应用 at 2016-1
 - 文章：[Spring Jpa中二级缓存的使用.](http://www.litianhua.net/blog/jpa-second-level-cache.html)
 
-## 作者信息
+## 作者信息(About)
 
 - Stark Li
 
-- 个人博客：[http://www.litianhua.net/](http://www.litianhua.net/)
+- Blog：[http://www.litianhua.net/](http://www.litianhua.net/)
 
-- 作者邮箱：starkli@126.com
+- Email：starkli@126.com
 
-- github：[https://github.com/litianhua/](https://github.com/litianhua/)
+- Github：[https://github.com/litianhua/](https://github.com/litianhua/)
 
 - Git@OSC： [http://git.oschina.net/skyli/](http://git.oschina.net/skyli/)
